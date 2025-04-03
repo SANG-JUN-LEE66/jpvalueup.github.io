@@ -1,0 +1,65 @@
+import { useState } from "react";
+import { MapPin, Phone, Mail, Sun, Moon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export default function AspenFinance() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  return (
+    <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}>
+      {/* 네비게이션 바 */}
+      <nav className="flex justify-between items-center p-4 bg-blue-600 text-white">
+        <h1 className="text-xl font-bold">ASPEN 해외금융 플랫폼</h1>
+        <div className="space-x-4">
+          <a href="#contact" className="hover:underline">문의하기</a>
+          <a href="#services" className="hover:underline">서비스</a>
+          <button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <Sun /> : <Moon />}
+          </button>
+        </div>
+      </nav>
+      
+      {/* 본문 */}
+      <main className="p-6">
+        <section id="contact" className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">📍 주소</h2>
+          <div className="flex items-center"><MapPin className="mr-2" />서울시 서초구 서초대로 77길 17블럭, 12층</div>
+        </section>
+        
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">📞 연락처</h2>
+          <div className="flex items-center"><Phone className="mr-2" />+82-10-8994-9448</div>
+        </section>
+        
+        <section id="email" className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">📧 이메일</h2>
+          <div className="flex items-center"><Mail className="mr-2" />frankychoi722@gmail.com</div>
+        </section>
+        
+        {/* 지도 삽입 */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">📍 위치</h2>
+          <iframe
+            src="https://www.google.com/maps?q=서울시 서초구 서초대로 77길 17블럭, 12층&output=embed"
+            className="w-full h-64 rounded-lg shadow-lg"
+            loading="lazy"
+          ></iframe>
+        </section>
+        
+        {/* 문의하기 폼 */}
+        <section id="inquiry" className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">💬 문의하기</h2>
+          <form className="space-y-4">
+            <input type="text" placeholder="이름" className="w-full p-2 border rounded" required />
+            <input type="email" placeholder="이메일" className="w-full p-2 border rounded" required />
+            <textarea placeholder="문의 내용을 입력하세요" className="w-full p-2 border rounded" required></textarea>
+            <Button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">보내기</Button>
+          </form>
+        </section>
+      </main>
+      
+      {/* 푸터 */}
+      <footer className="text-center p-4 bg-blue-600 text-white">© 2025 ASPEN 해외금융 플랫폼</footer>
+    </div>
+  );
+}
